@@ -1,0 +1,67 @@
+{
+  "name": "dsh-scroll-piano",
+  "version": "0.3.5",
+  "description": "滚动钢琴：鼠标滑过 DSH 右侧边缘的滚动条竖条时，按纵向位置发出钢琴音（越高音越高，特雷门琴式）。",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "piano",
+    "scrollbar",
+    "theremin",
+    "钢琴",
+    "滚动钢琴"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/439436269-ctrl/dsh-scroll-piano.git"
+  },
+  "homepage": "https://github.com/439436269-ctrl/dsh-scroll-piano#readme",
+  "bugs": {
+    "url": "https://github.com/439436269-ctrl/dsh-scroll-piano/issues"
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "scripts": {
+    "test": "node test/bundle-check.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.0-rc.2": "compatible"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      # Static self-check: asserts the client bundle's structure and key markers.
+      # It reads lib/client.js as text — no dependencies, no browser needed.
+      - name: Bundle self-check
+        run: node test/bundle-check.mjs

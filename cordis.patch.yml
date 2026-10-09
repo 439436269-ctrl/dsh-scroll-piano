@@ -1,0 +1,4 @@
+# dsh-scroll-piano：往插件树里插一行（纯客户端插件，服务器半无配置）。
+- insert:
+    - id: dsh-scroll-piano
+      name: dsh-scroll-piano
